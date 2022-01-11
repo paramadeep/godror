@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "num",
+    srcs = ["ocinum.go"],
+    importpath = "github.com/godror/godror/num",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "num_test",
+    srcs = ["ocinum_test.go"],
+    embed = [":num"],
+)

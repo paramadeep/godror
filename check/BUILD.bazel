@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "check_lib",
+    srcs = ["check.go"],
+    importpath = "github.com/godror/godror/check",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "check",
+    embed = [":check_lib"],
+    visibility = ["//visibility:public"],
+)

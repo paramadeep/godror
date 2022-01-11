@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "dsn",
+    srcs = [
+        "dsn.go",
+        "dsn_fuzz.go",
+    ],
+    importpath = "github.com/godror/godror/dsn",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_go_logfmt_logfmt//:logfmt"],
+)
+
+go_test(
+    name = "dsn_test",
+    srcs = ["dsn_test.go"],
+    embed = [":dsn"],
+    deps = [
+        "@com_github_google_go_cmp//cmp",
+        "@com_github_google_go_cmp//cmp/cmpopts",
+    ],
+)
